@@ -1180,73 +1180,80 @@ def test_update_missing_attr_value_dot_notation(self):
 
 
 def test_update_valid_string_attr_space_notation(self):
-    with patch("sys.stdout", new=StringIO()) as output:
-        HBNBCommand().onecmd("create BaseModel")
-        testId = output.getvalue().strip()
-    testCmd = "update BaseModel {} attr_name 'attr_value'".format(testId)
-    self.assertFalse(HBNBCommand().onecmd(testCmd))
-    test_dict = storage.all()["BaseModel.{}".format(testId)].__dict__
-    self.assertEqual("attr_value", test_dict["attr_name"])
+        # Testing BaseModel update
+        with patch("sys.stdout", new=StringIO()) as output:
+            HBNBCommand().onecmd("create BaseModel")
+            testId = output.getvalue().strip()
+        testCmd = "update BaseModel {} attr_name 'attr_value'".format(testId)
+        self.assertFalse(HBNBCommand().onecmd(testCmd))
+        test_dict = storage.all()["BaseModel.{}".format(testId)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
 
-    with patch("sys.stdout", new=StringIO()) as output:
-        HBNBCommand().onecmd("create User")
-        testId = output.getvalue().strip()
-    testCmd = "update User {} attr_name 'attr_value'".format(testId)
-    self.assertFalse(HBNBCommand().onecmd(testCmd))
-    test_dict = storage.all()["User.{}".format(testId)].__dict__
-    self.assertEqual("attr_value", test_dict["attr_name"])
+        # Testing User update
+        with patch("sys.stdout", new=StringIO()) as output:
+            HBNBCommand().onecmd("create User")
+            testId = output.getvalue().strip()
+        testCmd = "update User {} attr_name 'attr_value'".format(testId)
+        self.assertFalse(HBNBCommand().onecmd(testCmd))
+        test_dict = storage.all()["User.{}".format(testId)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
 
+        # Testing State update
+        with patch("sys.stdout", new=StringIO()) as output:
+            HBNBCommand().onecmd("create State")
+            testId = output.getvalue().strip()
+        testCmd = "update State {} attr_name 'attr_value'".format(testId)
+        self.assertFalse(HBNBCommand().onecmd(testCmd))
+        test_dict = storage.all()["State.{}".format(testId)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
 
-with patch("sys.stdout", new=StringIO()) as output:
-    HBNBCommand().onecmd("create State")
-    testId = output.getvalue().strip()
-    testCmd = "update State {} attr_name 'attr_value'".format(testId)
-    self.assertFalse(HBNBCommand().onecmd(testCmd))
-    test_dict = storage.all()["State.{}".format(testId)].__dict__
-    self.assertEqual("attr_value", test_dict["attr_name"])
+        # Testing City update
+        with patch("sys.stdout", new=StringIO()) as output:
+            HBNBCommand().onecmd("create City")
+            testId = output.getvalue().strip()
+        testCmd = "update City {} attr_name 'attr_value'".format(testId)
+        self.assertFalse(HBNBCommand().onecmd(testCmd))
+        test_dict = storage.all()["City.{}".format(testId)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
 
-    with patch("sys.stdout", new=StringIO()) as output:
-        HBNBCommand().onecmd("create City")
-        testId = output.getvalue().strip()
-    testCmd = "update City {} attr_name 'attr_value'".format(testId)
-    self.assertFalse(HBNBCommand().onecmd(testCmd))
-    test_dict = storage.all()["City.{}".format(testId)].__dict__
-    self.assertEqual("attr_value", test_dict["attr_name"])
+        # Testing Place update
+        with patch("sys.stdout", new=StringIO()) as output:
+            HBNBCommand().onecmd("create Place")
+            testId = output.getvalue().strip()
+        testCmd = "update Place {} attr_name 'attr_value'".format(testId)
+        self.assertFalse(HBNBCommand().onecmd(testCmd))
+        test_dict = storage.all()["Place.{}".format(testId)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
 
-    with patch("sys.stdout", new=StringIO()) as output:
-        HBNBCommand().onecmd("create Place")
-        testId = output.getvalue().strip()
-    testCmd = "update Place {} attr_name 'attr_value'".format(testId)
-    self.assertFalse(HBNBCommand().onecmd(testCmd))
-    test_dict = storage.all()["Place.{}".format(testId)].__dict__
-    self.assertEqual("attr_value", test_dict["attr_name"])
+        # Testing Amenity update
+        with patch("sys.stdout", new=StringIO()) as output:
+            HBNBCommand().onecmd("create Amenity")
+            testId = output.getvalue().strip()
+        testCmd = "update Amenity {} attr_name 'attr_value'".format(testId)
+        self.assertFalse(HBNBCommand().onecmd(testCmd))
+        test_dict = storage.all()["Amenity.{}".format(testId)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
 
-    with patch("sys.stdout", new=StringIO()) as output:
-        HBNBCommand().onecmd("create Amenity")
-        testId = output.getvalue().strip()
-    testCmd = "update Amenity {} attr_name attr_value".format(testId)
-    self.assertFalse(HBNBCommand().onecmd(testCmd))
-    test_dict = storage.all()["Amenity.{}".format(testId)].__dict__
-    self.assertEqual("attr_value", test_dict["attr_name"])
-
-    with patch("sys.stdout", new=StringIO()) as output:
-        HBNBCommand().onecmd("create Review")
-        testId = output.getvalue().strip()
-    testCmd = "update Review {} attr_name attr_value".format(testId)
-    self.assertFalse(HBNBCommand().onecmd(testCmd))
-    test_dict = storage.all()["Review.{}".format(testId)].__dict__
-    self.assertTrue("attr_value", test_dict["attr_name"])
+        # Testing Review update
+        with patch("sys.stdout", new=StringIO()) as output:
+            HBNBCommand().onecmd("create Review")
+            testId = output.getvalue().strip()
+        testCmd = "update Review {} attr_name 'attr_value'".format(testId)
+        self.assertFalse(HBNBCommand().onecmd(testCmd))
+        test_dict = storage.all()["Review.{}".format(testId)].__dict__
+        self.assertEqual("attr_value", test_dict["attr_name"])
 
 
 def test_update_valid_string_attr_dot_notation(self):
     with patch("sys.stdout", new=StringIO()) as output:
         HBNBCommand().onecmd("create BaseModel")
         tId = output.getvalue().strip()
-    testCmd = "BaseModel.update('{}', 'attr_name', 'attr_value')".format(
-        tId)
+
+    testCmd = "BaseModel.update('{}', 'attr_name', 'attr_value')".format(tId)
     self.assertFalse(HBNBCommand().onecmd(testCmd))
     test_dict = storage.all()["BaseModel.{}".format(tId)].__dict__
     self.assertEqual("attr_value", test_dict["attr_name"])
+
 
     with patch("sys.stdout", new=StringIO()) as output:
         HBNBCommand().onecmd("create User")
